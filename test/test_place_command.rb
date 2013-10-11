@@ -1,0 +1,25 @@
+require "test/unit"
+
+require '../lib/robot'
+
+class TestPlace < Test::Unit::TestCase
+
+  def setup
+    @toy = Toy.new Board.new
+  end
+
+  def test_execute
+    @cmd = PlaceCommand.new(@toy, Position.new(4,4), Direction.north)
+    @cmd.execute
+    assert @toy.position.is_valid?
+    assert @toy.position = Position.new(4,4)
+    assert @toy.direction = Direction.north
+  end
+
+  def test_place_within_board_only
+    @cmd = PlaceCommand.new(@toy, Position.new(5, 0), Direction.north)
+    @cmd.execute
+    assert !@toy.position.is_valid?
+  end
+
+end
