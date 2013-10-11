@@ -1,6 +1,6 @@
 require "test/unit"
 
-require '../lib/robot'
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'robot.rb'))
 
 class TestLeft < Test::Unit::TestCase
 
