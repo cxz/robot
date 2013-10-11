@@ -1,5 +1,21 @@
+requires = [
+  'position.rb',
+  'direction.rb',
+  'board.rb',
+  'toy.rb',
+  'command.rb',
+  'player.rb',
+  'invalid_command.rb',
+  'left_command.rb',
+  'move_command.rb',
+  'place_command.rb',
+  'quit_command.rb',
+  'report_command.rb',
+  'right_command.rb'
+]
+
 File.tap do |f|
-  Dir[f.expand_path(f.join(f.dirname(__FILE__), 'robot', '*.rb'))].each do |file|
-    require file
+  requires.each do |file|
+    require  f.expand_path(f.join(f.dirname(__FILE__), 'robot', file))
   end
 end
