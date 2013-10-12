@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 
 File.tap { |f| require f.expand_path(f.join(f.dirname(__FILE__), '..', 'lib', 'robot.rb')) }
 
@@ -9,8 +9,7 @@ toy = Toy.new(Board.new)
 begin
   loop do
     ('%s> ' % NAME).display
-    input = gets
-    exit unless input
+    input = gets || exit
     verb, *params = input.chomp.strip.split /\s/
     params ||= []
     params = params.join(' ').split(/,/).collect{ |i| i.strip.gsub(/,/, "")}.select{ |i| i }
