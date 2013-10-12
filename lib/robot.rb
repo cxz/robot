@@ -1,6 +1,6 @@
 requires = [
   'position.rb',
-  'direction.rb',
+  'orientation.rb',
   'board.rb',
   'toy.rb',
   'command.rb',

@@ -18,6 +18,10 @@ class Position
   def ==(other)
     @x == other.x and @y == other.y
   end
+
+  def +(other)
+    Position.new(@x + other.x, @y + other.y)
+  end
 end
 
 class InvalidPosition < Position

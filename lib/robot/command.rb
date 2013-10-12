@@ -9,7 +9,7 @@ class Command
       case verb
       when /\Aplace\z/i
         position = Position.new(params[0], params[1])
-        direction = Direction.parse(params[2])
+        direction = Orientation.parse(params[2])
         PlaceCommand.new(toy, position, direction)
       when /\Amove\z/i
         MoveCommand.new(toy)

@@ -7,7 +7,7 @@ class TestMove < Test::Unit::TestCase
   def setup
     @toy = Toy.new Board.new
     @toy.position = Position.new(0,0)
-    @toy.direction = Direction.north
+    @toy.direction = Orientation::NORTH
     @cmd = MoveCommand.new(@toy)
   end
 

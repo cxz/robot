@@ -7,7 +7,7 @@ class Toy
   def initialize(board)
     @board = board
     @position = InvalidPosition.new
-    @direction = Direction.north
+    @direction = Orientation::NORTH
   end
 
   def within_board?
