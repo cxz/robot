@@ -6,14 +6,19 @@ NAME = "Toy Robot"
 
 toy = Toy.new(Board.new)
 
-
-loop do
-  ('%s> ' % NAME).display
-  input = gets.chomp
-  verb, *params = input.strip.split /\s/
-  params ||= []
-  params = params.join(' ').split(/,/).collect{ |i| i.strip.gsub(/,/, "")}.select{ |i| i }
-  cmd = Command.create(toy, verb, params)
-  cmd.execute
+begin
+  loop do
+    ('%s> ' % NAME).display
+    input = gets
+    exit unless input
+    verb, *params = input.chomp.strip.split /\s/
+    params ||= []
+    params = params.join(' ').split(/,/).collect{ |i| i.strip.gsub(/,/, "")}.select{ |i| i }
+    cmd = Command.create(toy, verb, params)
+    cmd.execute
+  end
+rescue Interrupt
+  #ouch
 end
+
 
