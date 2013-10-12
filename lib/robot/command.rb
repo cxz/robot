@@ -1,34 +1,27 @@
 class Command
 
-  def initialize(toy)
+  def initialize(toy, params=nil)
     @toy = toy
   end
 
   def self.create(toy, verb, params)
+    verb = verb.to_sym
     begin
-      case verb
-      when /\Aplace\z/i
-        position = Position.new(params[0], params[1])
-        direction = Orientation.parse(params[2]) || raise
-        PlaceCommand.new(toy, position, direction)
-      when /\Amove\z/i
-        MoveCommand.new(toy)
-      when /\Aleft\z/i
-        LeftCommand.new(toy)
-      when /\Aright\z/i
-        RightCommand.new(toy)
-      when /\Areport\z/i
-        ReportCommand.new(toy)
-      when /\Aquit\z/i
-        QuitCommand.new(toy)
-      else
-        InvalidCommand.new(toy)
+      if [:place, :move, :left, :right, :report, :quit].include? verb
+        klass = Object.const_get "#{verb.capitalize}Command"
+        if params && params.length > 0
+          cmd = klass.send(:parse, toy, params)
+        else
+          cmd = klass.send(:new, toy)
+        end
       end
     rescue
-      InvalidCommand.new(toy)
+      #any exception means an invalid command.
     end
-
+    cmd ||= InvalidCommand.new(toy)
+    cmd
   end
+
 end
 
 
