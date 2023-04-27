@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class MoveCommand < Command
+  NAME = :move
+  ALIAS = :M
+
   def execute
     return unless @toy.within_board?
 

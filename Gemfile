@@ -8,5 +8,6 @@ group :test do
   gem 'minitest-reporters', '>= 1.6.0'
 end
 
+gem 'rake'
 gem 'rubocop', require: false
 gem 'rubocop-minitest', require: false

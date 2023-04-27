@@ -11,10 +11,10 @@ class Toy
   end
 
   def within_board?
-    @board.contains? @position
+    board.contains?(position)
   end
 
   def to_s
-    "direction: #{@direction} position: #{@position} board: #{@board}"
+    "direction: #{direction} position: #{position} board: #{board}"
   end
 end

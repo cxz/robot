@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'singleton'
+
 class CommandParser
   def initialize(toy)
     @toy = toy
@@ -7,16 +9,14 @@ class CommandParser
 
   def parse(line)
     verb, params = parse_verb_and_parms(line)
-    raise unless %i[place move left right report quit].include?(verb)
+    klass = Command.get_klass(verb)
+    return InvalidCommand.new(toy) unless klass
 
     if verb == :place
       parse_place(params)
     else
-      klass = Object.const_get "#{verb.capitalize}Command"
       klass.new(toy)
     end
-  rescue StandardError
-    InvalidCommand.new(toy)
   end
 
   private
@@ -31,7 +31,9 @@ class CommandParser
 
   def parse_place(params)
     position = Position.new(params[0], params[1])
-    orientation = Orientation.parse(params[2]) || raise
+    orientation = Orientation.parse(params[2])
+    return InvalidCommand.new(toy) unless orientation
+
     PlaceCommand.new(toy, position, orientation)
   end
 end

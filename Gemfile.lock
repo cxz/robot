@@ -15,6 +15,7 @@ GEM
     parser (3.2.2.1)
       ast (~> 2.4.1)
     rainbow (3.1.1)
+    rake (13.0.6)
     regexp_parser (2.8.0)
     rexml (3.2.5)
     rubocop (1.50.2)
@@ -41,6 +42,7 @@ PLATFORMS
 DEPENDENCIES
   minitest
   minitest-reporters (>= 1.6.0)
+  rake
   rubocop
   rubocop-minitest
 

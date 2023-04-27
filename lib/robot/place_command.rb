@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PlaceCommand < Command
+  NAME = :place
+
   def initialize(toy, position, orientation)
     super(toy)
 
