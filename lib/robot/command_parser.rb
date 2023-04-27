@@ -25,7 +25,7 @@ class CommandParser
 
   def parse_verb_and_parms(line)
     verb, *params = line.gsub(/,/, ' ').split(/\s/).filter_map { |token| token.chomp unless token.empty? }
-    [verb.to_sym, (params || []).map(&:chomp)]
+    [verb.to_sym, params || []]
   end
 
   def parse_place(params)
