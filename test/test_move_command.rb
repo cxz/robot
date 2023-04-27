@@ -3,7 +3,7 @@ require_relative 'helper'
 class TestMove < Minitest::Test
 
   def setup
-    @toy = Toy.new Board.new
+    @toy = Toy.new Board.new(5, 5)
     @toy.position = Position.new(0,0)
     @toy.direction = Orientation::NORTH
     @cmd = MoveCommand.new(@toy)

@@ -6,9 +6,11 @@ class PlaceCommand < Command
   end
 
   def execute
-    if @toy.board.contains? @position
+    if @toy.board.contains?(@position)
       @toy.position = @position
       @toy.direction = @direction
+    else
+      raise InvalidCoordinateError.new("position: #{@position}, board: #{@toy.board}")
     end
   end
 

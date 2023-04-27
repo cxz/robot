@@ -13,7 +13,8 @@ requires = [
   'place_command.rb',
   'quit_command.rb',
   'report_command.rb',
-  'right_command.rb'
+  'right_command.rb',
+  "errors.rb"
 ]
 
 File.tap do |f|

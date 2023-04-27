@@ -1,0 +1,1 @@
+InvalidCoordinateError = Class.new(Exception)

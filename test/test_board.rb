@@ -2,7 +2,7 @@ require_relative 'helper'
 
 class TestBoard < Minitest::Test
   def setup
-    @board = Board.new
+    @board = Board.new(5, 5)
   end
   def test_contains
     assert_equal true,  (@board.contains? Position.new(0,0))
