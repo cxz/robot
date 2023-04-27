@@ -1,18 +1,39 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.4.3)
-    builder (3.2.2)
-    hashie (2.0.5)
-    minitest (4.7.5)
-    minitest-reporters (0.14.23)
+    ansi (1.5.0)
+    ast (2.4.2)
+    builder (3.2.4)
+    json (2.6.3)
+    minitest (5.18.0)
+    minitest-reporters (1.6.0)
       ansi
       builder
-      minitest (>= 2.12, < 5.0)
-      powerbar
-    powerbar (1.0.11)
-      ansi (~> 1.4.0)
-      hashie (>= 1.1.0)
+      minitest (>= 5.0)
+      ruby-progressbar
+    parallel (1.23.0)
+    parser (3.2.2.1)
+      ast (~> 2.4.1)
+    rainbow (3.1.1)
+    rake (13.0.6)
+    regexp_parser (2.8.0)
+    rexml (3.2.5)
+    rubocop (1.50.2)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.2.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.28.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.28.0)
+      parser (>= 3.2.1.0)
+    rubocop-minitest (0.30.0)
+      rubocop (>= 1.39, < 2.0)
+    ruby-progressbar (1.13.0)
+    unicode-display_width (2.4.2)
 
 PLATFORMS
   ruby
@@ -20,4 +41,10 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
-  minitest-reporters (>= 0.5.0)
+  minitest-reporters (>= 1.6.0)
+  rake
+  rubocop
+  rubocop-minitest
+
+BUNDLED WITH
+   2.3.26

@@ -1,23 +1,21 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 File.tap { |f| require f.expand_path(f.join(f.dirname(__FILE__), '..', 'lib', 'robot.rb')) }
 
-NAME = "Toy Robot"
+NAME = 'Toy Robot'
 
 toy = Toy.new(Board.new)
 
 begin
+  parser = CommandParser.new(toy)
+
   loop do
-    ('%s> ' % NAME).display
+    format('%s> ', NAME).display if $stdin.tty?
     input = gets || exit
-    verb, *params = input.chomp.strip.split /\s/
-    params ||= []
-    params = params.join(' ').split(/,/).collect{ |i| i.strip.gsub(/,/, "")}.select{ |i| i }
-    cmd = Command.create(toy, verb, params)
+    cmd = parser.parse(input)
     cmd.execute
   end
 rescue Interrupt
-  #ouch
+  # ouch
 end
-
-

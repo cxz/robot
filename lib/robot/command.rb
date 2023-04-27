@@ -1,28 +1,37 @@
-class Command
+# frozen_string_literal: true
 
-  def initialize(toy, params=nil)
+class Command
+  class << self
+    def inherited(base)
+      super
+
+      @registry ||= []
+      @registry << base
+    end
+
+    def get_klass(name)
+      @klass_cache ||= {}
+      @klass_cache[name] ||= @registry.find { |klass| [klass.name, klass.alias].include?(name) }
+    end
+
+    def name
+      const_get(:NAME)
+    end
+
+    def alias
+      const_get(:ALIAS) if const_defined?(:ALIAS)
+    end
+  end
+
+  def initialize(toy, _params = nil)
     @toy = toy
   end
 
-  def self.create(toy, verb, params)
-    verb = verb.to_sym
-    begin
-      if [:place, :move, :left, :right, :report, :quit].include? verb
-        klass = Object.const_get "#{verb.capitalize}Command"
-        if params && params.length > 0
-          cmd = klass.send(:parse, toy, params)
-        else
-          cmd = klass.send(:new, toy)
-        end
-      end
-    rescue
-      #any exception means an invalid command.
-    end
-    cmd ||= InvalidCommand.new(toy)
-    cmd
+  def to_s
+    self.class.name.to_s
   end
 
+  private
+
+  attr_reader :toy
 end
-
-
-

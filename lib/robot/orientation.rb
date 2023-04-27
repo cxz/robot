@@ -1,31 +1,31 @@
+# frozen_string_literal: true
+
 class Orientation
+  attr_reader :unity_vector, :name, :short_name
 
-  attr_reader :unity_vector
-  attr_reader :name
-
-  def initialize(name, unity_vector)
+  def initialize(name, short_name, unity_vector)
     @name = name.downcase.to_s
+    @short_name = short_name.to_s
     @unity_vector = unity_vector
   end
 
-  NORTH = Orientation.new(:north, Position.new(0, 1))
-  EAST = Orientation.new(:east, Position.new(1, 0))
-  SOUTH = Orientation.new(:south, Position.new(0, -1))
-  WEST = Orientation.new(:west, Position.new(-1, 0))
+  NORTH = Orientation.new(:north, :N, Position.new(0, 1))
+  EAST = Orientation.new(:east, :E, Position.new(1, 0))
+  SOUTH = Orientation.new(:south, :S, Position.new(0, -1))
+  WEST = Orientation.new(:west, :W, Position.new(-1, 0))
 
-  CLOCKWISE = [NORTH, EAST, SOUTH, WEST]
-
+  CLOCKWISE = [NORTH, EAST, SOUTH, WEST].freeze
 
   def self.parse(name)
-    CLOCKWISE.select{ |d| d.to_s == name.downcase }.fetch(0, nil)
+    CLOCKWISE.find { |d| d.name == name&.downcase&.to_s || d.short_name == name.to_s }
   end
 
   def rotate_right
-    CLOCKWISE[ (self.to_i + 1) % CLOCKWISE.length]
+    CLOCKWISE[(to_i + 1) % CLOCKWISE.length]
   end
 
   def rotate_left
-    CLOCKWISE[ (self.to_i - 1) % CLOCKWISE.length]
+    CLOCKWISE[(to_i - 1) % CLOCKWISE.length]
   end
 
   def to_s
@@ -33,11 +33,10 @@ class Orientation
   end
 
   def to_i
-    CLOCKWISE.index{ |d| d.name == @name }
+    CLOCKWISE.index { |d| d.name == @name }
   end
 
   def ==(other)
     @name == other.to_s and @unity_vector == other.unity_vector
   end
-
 end

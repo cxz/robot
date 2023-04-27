@@ -1,20 +1,27 @@
+# frozen_string_literal: true
+
 class PlaceCommand < Command
+  NAME = :place
+
   def initialize(toy, position, orientation)
-    @toy = toy
+    super(toy)
+
     @position = position
     @direction = orientation
   end
 
   def execute
-    if @toy.board.contains? @position
-      @toy.position = @position
-      @toy.direction = @direction
-    end
+    raise InvalidCoordinateError, "position: #{position}, board: #{toy.board}" unless toy.board.contains?(position)
+
+    toy.position = position
+    toy.direction = direction
   end
 
-  def self.parse toy, params
-    position = Position.new(params[0], params[1])
-    orientation = Orientation.parse(params[2]) || raise
-    PlaceCommand.new(toy, position, orientation)
+  def to_s
+    "place #{position.coord_x}, #{position.coord_y}, #{direction}"
   end
+
+  private
+
+  attr_reader :position, :direction
 end

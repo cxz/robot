@@ -1,21 +1,23 @@
-requires = [
-  'position.rb',
-  'orientation.rb',
-  'board.rb',
-  'toy.rb',
-  'command.rb',
-  'player.rb',
-  'invalid_command.rb',
-  'left_command.rb',
-  'move_command.rb',
-  'place_command.rb',
-  'quit_command.rb',
-  'report_command.rb',
-  'right_command.rb'
-]
+# frozen_string_literal: true
+
+requires = %w[session
+              position
+              orientation
+              board
+              toy
+              command
+              command_parser
+              invalid_command
+              left_command
+              move_command
+              place_command
+              quit_command
+              report_command
+              right_command
+              errors]
 
 File.tap do |f|
   requires.each do |file|
-    require  f.expand_path(f.join(f.dirname(__FILE__), 'robot', file))
+    require f.expand_path(f.join(f.dirname(__FILE__), 'robot', file))
   end
 end

@@ -1,13 +1,9 @@
-require "test/unit"
+# frozen_string_literal: true
 
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'robot.rb'))
+require_relative 'helper'
 
-class TestLeft < Test::Unit::TestCase
+class TestLeft < Minitest::Test
+  def setup; end
 
-  def setup
-  end
-
-  def test_execute
-
-  end
+  def test_execute; end
 end
