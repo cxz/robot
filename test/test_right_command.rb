@@ -2,7 +2,7 @@ require "test/unit"
 
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'robot.rb'))
 
-class TestRight < Test::Unit::TestCase
+class TestRight < Minitest::Test
 
   def setup
   end

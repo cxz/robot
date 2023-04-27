@@ -1,9 +1,11 @@
 requires = [
+  'session',
   'position.rb',
   'orientation.rb',
   'board.rb',
   'toy.rb',
   'command.rb',
+  'command_parser.rb',
   'player.rb',
   'invalid_command.rb',
   'left_command.rb',

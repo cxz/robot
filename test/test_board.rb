@@ -1,8 +1,6 @@
-require "test/unit"
+require_relative 'helper'
 
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'robot.rb'))
-
-class TestBoard < Test::Unit::TestCase
+class TestBoard < Minitest::Test
   def setup
     @board = Board.new
   end

@@ -1,8 +1,6 @@
-require "test/unit"
+require_relative 'helper'
 
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'robot.rb'))
-
-class TestOrientation < Test::Unit::TestCase
+class TestOrientation < Minitest::Test
 
   def test_rotate_right
     assert_equal Orientation::EAST, Orientation::NORTH.rotate_right

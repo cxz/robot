@@ -12,9 +12,7 @@ class PlaceCommand < Command
     end
   end
 
-  def self.parse toy, params
-    position = Position.new(params[0], params[1])
-    orientation = Orientation.parse(params[2]) || raise
-    PlaceCommand.new(toy, position, orientation)
+  def to_s
+    "place #{@position.x}, #{@position.y}, #{@direction}"
   end
 end

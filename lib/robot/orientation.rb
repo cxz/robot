@@ -17,7 +17,7 @@ class Orientation
 
 
   def self.parse(name)
-    CLOCKWISE.select{ |d| d.to_s == name.downcase }.fetch(0, nil)
+    CLOCKWISE.find{ |d| d.to_s == name.to_s.downcase }
   end
 
   def rotate_right
