@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+File.tap { |f| require f.expand_path(f.join(f.dirname(__FILE__), '..', 'lib', 'robot.rb')) }
+
+begin
+  right, top = gets.split.map(&:to_i)
+  session = Session.new(right, top).start
+
+  loop do
+    x, y, heading = gets&.split || break
+    instructions = gets.split
+    session.execute(["place #{x},#{y},#{heading}"] + instructions)
+    puts("#{session.position.coord_x} #{session.position.coord_y} #{session.direction.short_name}")
+  end
+rescue Interrupt
+  # ouch
+end
