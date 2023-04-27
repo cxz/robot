@@ -1,34 +1,32 @@
-class Position
-  attr_reader :x
-  attr_reader :y
+# frozen_string_literal: true
 
-  def initialize(x, y)
-    @x = x.to_i
-    @y = y.to_i
+class Position
+  attr_reader :coord_x, :coord_y
+
+  def initialize(coord_x, coord_y)
+    @coord_x = coord_x.to_i
+    @coord_y = coord_y.to_i
   end
 
   def to_s
-    "[#{@x}, #{@y}]"
+    "[#{@coord_x}, #{@coord_y}]"
   end
 
-  def is_valid?
+  def valid?
     true
   end
 
   def ==(other)
-    @x == other.x and @y == other.y
+    @coord_x == other.coord_x and @coord_y == other.coord_y
   end
 
   def +(other)
-    Position.new(@x + other.x, @y + other.y)
+    Position.new(@coord_x + other.coord_x, @coord_y + other.coord_y)
   end
 end
 
 class InvalidPosition < Position
-  def initialize
-  end
-
-  def is_valid?
+  def valid?
     false
   end
 end

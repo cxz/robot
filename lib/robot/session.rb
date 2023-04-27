@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Session
   def initialize(width, height)
     @board = Board.new(width, height)

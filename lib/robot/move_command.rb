@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class MoveCommand < Command
   def execute
     return unless @toy.within_board?
 
     new_position = @toy.position + @toy.direction.unity_vector
 
-    if @toy.board.contains?(new_position)
-      @toy.position = new_position
-    else
-      raise InvalidCoordinateError.new("new_position: #{new_position}, board: #{@toy.board}")
+    unless @toy.board.contains?(new_position)
+      raise InvalidCoordinateError, "new_position: #{new_position}, board: #{@toy.board}"
     end
+
+    @toy.position = new_position
   end
 end

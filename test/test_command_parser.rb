@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'helper'
 
 class TestCommandParser < Minitest::Test
@@ -7,8 +9,8 @@ class TestCommandParser < Minitest::Test
   end
 
   def test_place
-    assert_equal "place 2, 2, south", parse("place 2, 2, south").to_s
-    assert_raises { parse("place") }
+    assert_equal 'place 2, 2, south', parse('place 2, 2, south').to_s
+    assert_equal 'invalid', parse('place').to_s
   end
 
   def test_parse

@@ -1,12 +1,12 @@
-class Toy
+# frozen_string_literal: true
 
-  attr_accessor :position
-  attr_accessor :direction
+class Toy
+  attr_accessor :position, :direction
   attr_reader :board
 
   def initialize(board)
     @board = board
-    @position = InvalidPosition.new
+    @position = InvalidPosition.new(nil, nil)
     @direction = Orientation::NORTH
   end
 
@@ -15,7 +15,6 @@ class Toy
   end
 
   def to_s
-    puts "direction: #{@direction} position: #{@position} board: #{@board}"
+    "direction: #{@direction} position: #{@position} board: #{@board}"
   end
 end
-

@@ -1,11 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'helper'
 
-class TestReport < Minitest::Test
+class TestReportCommand < Minitest::Test
+  def setup; end
 
-  def setup
-  end
-
-  def test_execute
-
-  end
+  def test_execute; end
 end

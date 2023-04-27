@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class ReportCommand < Command
   def execute
     if @toy.within_board?
-      puts "#{@toy.position.x}, #{@toy.position.y}, #{@toy.direction}"
+      puts "#{@toy.position.coord_x}, #{@toy.position.coord_y}, #{@toy.direction}"
     else
-      puts "not within board"
+      puts 'not within board'
     end
   end
 end
