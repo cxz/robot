@@ -28,7 +28,7 @@ class Command
   end
 
   def to_s
-    self.class.to_s.gsub(/Command/, '').downcase
+    self.class.name.to_s
   end
 
   private
