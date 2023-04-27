@@ -4,8 +4,8 @@ class ReportCommand < Command
   NAME = :report
 
   def execute
-    if @toy.within_board?
-      puts "#{@toy.position.coord_x}, #{@toy.position.coord_y}, #{@toy.direction}"
+    if toy.within_board?
+      puts "#{toy.position.coord_x}, #{toy.position.coord_y}, #{toy.direction}"
     else
       puts 'not within board'
     end

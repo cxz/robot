@@ -13,8 +13,8 @@ class PlaceCommand < Command
   def execute
     raise InvalidCoordinateError, "position: #{position}, board: #{toy.board}" unless toy.board.contains?(position)
 
-    toy.position = position
-    toy.direction = direction
+    toy.move(position)
+    toy.head(direction)
   end
 
   def to_s

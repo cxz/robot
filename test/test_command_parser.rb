@@ -10,6 +10,7 @@ class TestCommandParser < Minitest::Test
 
   def test_place
     assert_equal 'place 2, 2, south', parse('place 2, 2, south').to_s
+    assert_equal 'place 2, 2, south', parse('place 2,2,south').to_s
     assert_equal 'invalid', parse('place').to_s
   end
 

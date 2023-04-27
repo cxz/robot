@@ -9,7 +9,7 @@ class Board
   def contains?(position)
     position.valid? &&
       position.coord_x >= 0 && position.coord_x <= width &&
-      position.coord_y >= 0 and position.coord_y <= height
+      position.coord_y >= 0 && position.coord_y <= height
   end
 
   def to_s

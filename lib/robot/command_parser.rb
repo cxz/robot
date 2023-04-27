@@ -9,7 +9,7 @@ class CommandParser
 
   def parse(line)
     verb, params = parse_verb_and_parms(line)
-    klass = Command.get_klass(verb)
+    klass = Command.get_class(verb)
     return InvalidCommand.new(toy) unless klass
 
     if verb == :place
@@ -24,9 +24,8 @@ class CommandParser
   attr_reader :toy
 
   def parse_verb_and_parms(line)
-    verb, *params = line.chomp.strip.split(/\s/)
-    params = (params || []).join(' ').split(/,/).collect { |i| i.strip.gsub(/,/, '') }
-    [verb.to_sym, params]
+    verb, *params = line.gsub(/,/, ' ').split(/\s/).filter_map { |token| token.chomp unless token.empty? }
+    [verb.to_sym, (params || []).map(&:chomp)]
   end
 
   def parse_place(params)

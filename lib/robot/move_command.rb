@@ -5,14 +5,14 @@ class MoveCommand < Command
   ALIAS = :M
 
   def execute
-    return unless @toy.within_board?
+    return unless toy.within_board?
 
-    new_position = @toy.position + @toy.direction.unity_vector
+    new_position = toy.position + toy.direction.unity_vector
 
-    unless @toy.board.contains?(new_position)
-      raise InvalidCoordinateError, "new_position: #{new_position}, board: #{@toy.board}"
+    unless toy.board.contains?(new_position)
+      raise InvalidCoordinateError, "new_position: #{new_position}, board: #{toy.board}"
     end
 
-    @toy.position = new_position
+    toy.move(new_position)
   end
 end

@@ -29,14 +29,14 @@ class Orientation
   end
 
   def to_s
-    @name
+    name
   end
 
   def to_i
-    CLOCKWISE.index { |d| d.name == @name }
+    CLOCKWISE.index { |d| d.name == name }
   end
 
   def ==(other)
-    @name == other.to_s and @unity_vector == other.unity_vector
+    name == other.to_s and unity_vector == other.unity_vector
   end
 end

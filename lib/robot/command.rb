@@ -9,9 +9,9 @@ class Command
       @registry << base
     end
 
-    def get_klass(name)
-      @klass_cache ||= {}
-      @klass_cache[name] ||= @registry.find { |klass| [klass.name, klass.alias].include?(name) }
+    def get_class(name)
+      @get_class ||= {}
+      @get_class[name] ||= @registry.find { |klass| [klass.name, klass.alias].include?(name) }
     end
 
     def name

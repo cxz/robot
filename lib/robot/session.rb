@@ -17,19 +17,19 @@ class Session
   end
 
   def position
-    @toy.position
+    toy.position
   end
 
   def direction
-    @toy.direction
+    toy.direction
   end
 
   private
 
-  attr_reader :toy
+  attr_reader :toy, :parser
 
   def execute_single(instruction)
-    command = @parser.parse(instruction)
+    command = parser.parse(instruction)
     command.execute
   end
 end

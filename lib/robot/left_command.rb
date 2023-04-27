@@ -5,6 +5,8 @@ class LeftCommand < Command
   ALIAS = :L
 
   def execute
-    @toy.direction = @toy.direction.rotate_left if @toy.within_board?
+    return unless toy.within_board?
+
+    toy.head(toy.direction.rotate_left)
   end
 end

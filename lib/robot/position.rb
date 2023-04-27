@@ -9,7 +9,7 @@ class Position
   end
 
   def to_s
-    "[#{@coord_x}, #{@coord_y}]"
+    "[#{coord_x}, #{coord_y}]"
   end
 
   def valid?
@@ -17,11 +17,11 @@ class Position
   end
 
   def ==(other)
-    @coord_x == other.coord_x and @coord_y == other.coord_y
+    coord_x == other.coord_x and coord_y == other.coord_y
   end
 
   def +(other)
-    Position.new(@coord_x + other.coord_x, @coord_y + other.coord_y)
+    Position.new(coord_x + other.coord_x, coord_y + other.coord_y)
   end
 end
 

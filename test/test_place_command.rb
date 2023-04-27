@@ -12,8 +12,8 @@ class TestPlace < Minitest::Test
     @cmd.execute
 
     assert_predicate @toy.position, :valid?
-    assert @toy.position = Position.new(4, 4)
-    assert @toy.direction = Orientation::NORTH
+    assert_equal @toy.position, Position.new(4, 4)
+    assert_equal @toy.direction, Orientation::NORTH
   end
 
   def test_raise_error

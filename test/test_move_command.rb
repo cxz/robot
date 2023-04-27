@@ -9,8 +9,8 @@ class TestMove < Minitest::Test
   end
 
   def test_execute
-    @toy.position = Position.new(0, 0)
-    @toy.direction = Orientation::NORTH
+    @toy.move(Position.new(0, 0))
+    @toy.head(Orientation::NORTH)
 
     @cmd.execute
 
@@ -18,8 +18,8 @@ class TestMove < Minitest::Test
   end
 
   def test_move_within_board
-    @toy.position = Position.new(0, 4)
-    @toy.direction = Orientation::NORTH
+    @toy.move(Position.new(0, 4))
+    @toy.head(Orientation::NORTH)
 
     @cmd.execute
 

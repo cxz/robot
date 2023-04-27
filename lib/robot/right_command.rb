@@ -5,6 +5,8 @@ class RightCommand < Command
   ALIAS = :R
 
   def execute
-    @toy.direction = @toy.direction.rotate_right if @toy.within_board?
+    return unless toy.within_board?
+
+    toy.head(toy.direction.rotate_right)
   end
 end
