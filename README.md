@@ -27,6 +27,7 @@ $ cat << EOF | bin/robot_v2
 L M L M L M L M M
 3 3 E
 M M R M M R M R R M
+EOF
 
 # outputs: 
 # 1 3 N
